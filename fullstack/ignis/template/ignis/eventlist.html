@@ -1,0 +1,49 @@
+<!-- ignis/event_list.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event List</title>
+</head>
+<body>
+    <h1>Event List</h1>
+
+    <!-- Display list of events -->
+    <ul>
+        {% for event in object_list %}
+            <li>
+                <strong>Event Name:</strong> {{ event.event_name }}<br>
+                <strong>Date:</strong> {{ event.date }}<br>
+                <strong>Time:</strong> {{ event.time }}<br>
+                <strong>Location:</strong> {{ event.location }}<br>
+                <!-- You can add more fields here as needed -->
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Create new event form -->
+    <h2>Create New Event</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="id_event_name">Event Name:</label><br>
+        <input type="text" id="id_event_name" name="event_name"><br>
+        
+        <label for="id_date">Date:</label><br>
+        <input type="date" id="id_date" name="date"><br>
+
+        <label for="id_time">Time:</label><br>
+        <input type="time" id="id_time" name="time"><br>
+
+        <label for="id_location">Location:</label><br>
+        <input type="text" id="id_location" name="location"><br>
+
+        <label for="id_image">Image:</label><br>
+        <input type="file" id="id_image" name="image"><br>
+
+        <label for="id_is_liked">Is Liked:</label>
+        <input type="checkbox" id="id_is_liked" name="is_liked"><br>
+        
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
